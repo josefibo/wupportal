@@ -17,11 +17,13 @@ import { OrganisationsTableComponent } from 'app/views/admin/organisations/organ
 import { ConfigFormComponent } from 'app/views/admin/configs/config.form';
 import { AuthenticationService } from 'app/services/authentication.service';
 import { RegisterFormComponent } from 'app/views/admin/users/register.form';
+import { IcsComponent } from 'app/views/iCalendar/ics.component';
 
 @NgModule({
 	imports: [RouterModule.forRoot([
 		{ path: '', component: MappingComponent },
 		{ path: 'login', component: LoginFormComponent },
+		{ path: 'ics', component: IcsComponent },
 		{ path: 'register', component: RegisterFormComponent },
 		{
 			path: 'admin', component: AdminComponent, canActivate: [AuthenticationService], children: [

@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRadioModule } from '@angular/material/radio';
+import {IcsComponent } from  'app/views/iCalendar/ics.component'; 
 
 import {
 	MatButtonModule,
@@ -128,7 +129,8 @@ import { OrganisationDetailComponent } from 'app/views/admin/organisations/organ
 		ConfigFormComponent,
 		DeleteDialogComponent,
 		DeleteActionComponent,
-		OrganisationSelectionComponent
+		OrganisationSelectionComponent,
+		IcsComponent
 	],
 	imports: [
 		AngularOpenlayersModule,
