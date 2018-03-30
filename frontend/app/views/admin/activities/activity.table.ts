@@ -21,11 +21,7 @@ import * as moment from 'moment';
 @Component({
 	selector: 'activity-table',
 	styleUrls: ['../table.abstract.css'],
-	templateUrl: 'activity.table.html',
-	providers: [
-		ProviderService, ActivityService,
-		{ provide: UserService, useFactory: DataServiceFactory(UserService), deps: [HttpClient, AuthenticationService] }
-	]
+	templateUrl: 'activity.table.html'
 })
 
 export class ActivityTableComponent extends AbstractTableComponent implements OnInit {
@@ -55,12 +51,7 @@ export class ActivityTableComponent extends AbstractTableComponent implements On
 		if (this.actionsVisible()) {
 			this.showNewButton = true;
 		} else {
-			let tmpProvs = 0;
-			this.providerService
-				.getByUser(this.authService.currentUser.id)
-				.subscribe(providers => providers.map(provider => {
-					if (provider.approved || this.showNewButton) { tmpProvs++; this.showNewButton = true; }
-				}));
+			this.showNewButton = this.authService.currentUser.approvedProvider;
 		}
 	}
 

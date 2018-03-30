@@ -22,10 +22,7 @@ import { Provider } from 'app/models/provider';
 @Component({
 	selector: 'user-form',
 	templateUrl: 'user.form.html',
-	styleUrls: ['user.form.css'],
-	providers: [
-		{ provide: UserService, useFactory: DataServiceFactory(UserService), deps: [HttpClient, AuthenticationService] }
-	]
+	styleUrls: ['user.form.css']
 })
 
 export class UserFormComponent implements OnInit {
@@ -63,13 +60,10 @@ export class UserFormComponent implements OnInit {
 		this.userService.edit(this.user)
 			.subscribe(user =>
 				this.authService.login(this.user.username, this.user.password)
-					.subscribe(succeeded =>
-						succeeded ? this.location.back() : this.authService.redirectToLogin())
+					.subscribe(
+						null,
+						error => this.authService.redirectToLogin())
 			);
-	}
-
-	back(): void {
-		this.location.back();
 	}
 
 	passwordInvalid(): string {

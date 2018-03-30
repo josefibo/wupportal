@@ -18,6 +18,7 @@ import {
 	MatButtonModule,
 	MatPaginatorIntl,
 	MatSidenavModule,
+	MatSnackBar,
 	MatSnackBarModule,
 	MatCardModule,
 	MatExpansionModule,
@@ -71,6 +72,18 @@ import { NominatimService } from 'app/services/nominatim';
 import { ValidationService } from 'app/services/validation.service';
 import { AuthenticationService } from 'app/services/authentication.service';
 import { Constants } from 'app/services/constants';
+import {
+	DataServiceFactory,
+	UserService,
+	TagService,
+	TargetGroupService,
+	OrganisationService,
+	AddressService,
+	ScheduleService,
+	SuburbService,
+	CategoryService,
+	ConfigurationService,
+} from 'app/services/data.service.factory';
 
 import { SuburbSelectionComponent } from 'app/views/admin/dialog/popup.suburb.selection';
 import { AddressCreateFormComponent } from 'app/views/admin/addresses/address.create.form';
@@ -88,6 +101,7 @@ import { PaginatorLabels } from 'app/views/admin/table/paginator.labels';
 
 import { ActivityDetailComponent } from 'app/views/admin/activities/activity.detail';
 import { OrganisationDetailComponent } from 'app/views/admin/organisations/organisation.detail';
+import { SchedulerComponent } from './views/admin/schedules/scheduler.component';
 
 
 
@@ -102,6 +116,7 @@ import { OrganisationDetailComponent } from 'app/views/admin/organisations/organ
 		FilterComponent,
 		MappingComponent,
 		AddressAutocompleteComponent,
+		SchedulerComponent,
 
 		UserTableComponent,
 		OrganisationsTableComponent,
@@ -168,7 +183,8 @@ import { OrganisationDetailComponent } from 'app/views/admin/organisations/organ
 		MatGridListModule,
 		MatSidenavModule,
 		MatAutocompleteModule,
-		MatInputModule
+		MatInputModule,
+		MatSnackBarModule
 	],
 	providers: [
 		ActivityService,
@@ -178,7 +194,43 @@ import { OrganisationDetailComponent } from 'app/views/admin/organisations/organ
 		Constants,
 		ValidationService,
 		AuthenticationService,
-		{ provide: MatPaginatorIntl, useClass: PaginatorLabels }
+		{ provide: MatPaginatorIntl, useClass: PaginatorLabels },
+		{
+			provide: OrganisationService, useFactory: DataServiceFactory(OrganisationService),
+			deps: [HttpClient, AuthenticationService, MatSnackBar]
+		},
+		{
+			provide: AddressService, useFactory: DataServiceFactory(AddressService),
+			deps: [HttpClient, AuthenticationService, MatSnackBar]
+		},
+		{
+			provide: UserService, useFactory: DataServiceFactory(UserService),
+			deps: [HttpClient, AuthenticationService, MatSnackBar]
+		},
+		{
+			provide: SuburbService, useFactory: DataServiceFactory(SuburbService),
+			deps: [HttpClient, AuthenticationService, MatSnackBar]
+		},
+		{
+			provide: ConfigurationService, useFactory: DataServiceFactory(ConfigurationService),
+			deps: [HttpClient, AuthenticationService, MatSnackBar]
+		},
+		{
+			provide: TagService, useFactory: DataServiceFactory(TagService),
+			deps: [HttpClient, AuthenticationService, MatSnackBar]
+		},
+		{
+			provide: TargetGroupService, useFactory: DataServiceFactory(TargetGroupService),
+			deps: [HttpClient, AuthenticationService, MatSnackBar]
+		},
+		{
+			provide: CategoryService, useFactory: DataServiceFactory(CategoryService),
+			deps: [HttpClient, AuthenticationService, MatSnackBar]
+		},
+		{
+			provide: ScheduleService, useFactory: DataServiceFactory(ScheduleService),
+			deps: [HttpClient, AuthenticationService, MatSnackBar]
+		}
 	],
 	entryComponents: [
 		SuburbSelectionComponent,
@@ -191,3 +243,5 @@ import { OrganisationDetailComponent } from 'app/views/admin/organisations/organ
 })
 
 export class AppModule { }
+
+

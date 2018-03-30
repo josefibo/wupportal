@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class Constants {
 
 	// --------------------------
-	// SERVER ERROR MESSAGES
+	// SERVER MESSAGES
 	// --------------------------
 
 	public static wrongCredentialsMessage: string = 'Kein Nutzer mit diesem Password gefunden';
@@ -12,15 +12,26 @@ export class Constants {
 	public static notFoundMessage: string = 'Kein Datensatz zu den Suchkriterien gefunden';
 	public static wrongInputFormatMessage: string = 'Format der Eingabefelder sind nicht korrekt';
 	public static unexpectedErrorMessage: string = 'Unerwarteter Serverfehler. Bitte erneut probieren oder Codeschluss kontaktieren';
+	public static successfulActionMessage: string = 'Aktion wurde erfolgreich ausgeführt';
+
+	public static SHORT: number = 2000;
+	public static MIDDLE: number = 7000;
+	public static LONG: number = 99999;
 
 	// --------------------------
 	// STATIC
 	// --------------------------
-
+	public static close: string = 'Schließen';
 	public static nextPageLabel: string = 'Nächste Seite';
 	public static previousPageLabel: string = 'Vorherige Seite';
 	public static itemsPerPageLabel: string = 'Einträge pro Seite';
 	public static of: string = 'von';
+	public static error: string = 'Fehler';
+
+	// --------------------------
+	// LABELS
+	// --------------------------
+
 	public weekDaysArray: string[] = ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag', 'Sonntag'];
 	public rythm: string = 'Rythmus';
 	public from: string = 'von';
@@ -38,11 +49,6 @@ export class Constants {
 	public yearly: string = 'jährlich';
 	public countryCode: string = 'de';
 
-	// --------------------------
-	// LABELS
-	// --------------------------
-
-	public close: string = 'Schließen';
 	public back: string = 'Zurück';
 	public newElement: string = 'Neu';
 	public cancel: string = 'Abbrechen';
@@ -51,7 +57,7 @@ export class Constants {
 	public login: string = 'anmelden';
 	public loginTitle: string = 'Login';
 	public register: string = 'registrieren';
-	public userName: string = 'Username';
+	public userName: string = 'Benutzername';
 	public password: string = 'Passwort';
 	public newPassword: string = 'Neues Passwort';
 	public confirmPassword: string = 'Passwort wiederholen';
@@ -109,8 +115,8 @@ export class Constants {
 	public chooseOrganisationForActivity: string = 'Im Namen welcher Organisation soll die Veranstaltung angelegt werden';
 	public tagsHint: string = 'Schlagworte bitte mit Komma trennen';
 	public scheduleInfo: string =
-		'Bei eintägigen Veranstaltungen bitte zwei mal' +
-		'das gleiche Datum angeben.Für regelmäßige Veranstaltungen bitte das Datum	des ersten und des' +
+		'Bei eintägigen Veranstaltungen bitte zwei mal ' +
+		'das gleiche Datum angeben.Für regelmäßige Veranstaltungen bitte das Datum	des ersten und des ' +
 		'letzten Termins angeben.Sie können die Termine anschließend noch einmal kontrollieren und verändern.';
 	public followingWeekdays: string = 'an folgenden Wochentagen';
 	public everyMonth: string = 'eines jeden Monats';
@@ -153,7 +159,6 @@ export class Constants {
 	public admin: string = 'Admin';
 	public userManagement: string = 'Nutzerverwaltung';
 
-	public error: string = 'Fehler';
 	public done: string = 'Erledigt';
 	public summary: string = 'Zusammenfassung';
 	public infos: string = 'Infos';
